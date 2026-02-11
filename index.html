@@ -1,734 +1,453 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao AgroMM - Guia de Primeiros Passos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #2e7d32 0%, #66bb6a 100%);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-
-        .welcome-section {
-            padding: 40px 30px;
-            background: #f8f9fa;
-            border-bottom: 3px solid #2e7d32;
-        }
-
-        .welcome-section h2 {
-            color: #2e7d32;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-        }
-
-        .welcome-section p {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            color: #555;
-        }
-
-        .content {
-            padding: 30px;
-        }
-
-        .intro {
-            background: #e8f5e9;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            border-left: 5px solid #2e7d32;
-        }
-
-        .intro h3 {
-            color: #2e7d32;
-            margin-bottom: 12px;
-            font-size: 1.4em;
-        }
-
-        .intro p {
-            color: #555;
-            font-size: 1.05em;
-        }
-
-        .step {
-            margin-bottom: 35px;
-            padding: 25px;
-            border-radius: 10px;
-            background: #f8f9fa;
-            border-left: 5px solid #2e7d32;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .step:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .step-number {
-            background: #2e7d32;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-
-        .step-title {
-            color: #2e7d32;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .step-description {
-            color: #555;
-            margin-bottom: 15px;
-            font-size: 1.05em;
-        }
-
-        .substeps {
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-
-        .substep {
-            margin-bottom: 12px;
-            padding: 12px;
-            background: white;
-            border-radius: 6px;
-            border-left: 3px solid #66bb6a;
-        }
-
-        .substep-title {
-            font-weight: bold;
-            color: #2e7d32;
-            margin-bottom: 5px;
-        }
-
-        .substep-description {
-            color: #666;
-            font-size: 0.95em;
-        }
-
-        .alert {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            display: flex;
-            align-items: start;
-        }
-
-        .alert-icon {
-            color: #ff9800;
-            font-size: 1.5em;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        .alert-content {
-            color: #856404;
-        }
-
-        .tip {
-            background: #d1ecf1;
-            border: 1px solid #17a2b8;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            display: flex;
-            align-items: start;
-        }
-
-        .tip-icon {
-            color: #17a2b8;
-            font-size: 1.5em;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-
-        .tip-content {
-            color: #0c5460;
-        }
-
-        .footer {
-            background: #2e7d32;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .footer h3 {
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-
-        .footer p {
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .support-box {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .step-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .step-number {
-                margin-bottom: 10px;
-            }
-
-            body {
-                padding: 10px;
-            }
-
-            .content {
-                padding: 20px;
-            }
-        }
-
-        .highlight {
-            background: #ffeb3b;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agromm - Guia de Primeiros Passos</title>
+  <link rel="icon" type="image/png" href="https://agromm.mbam.com.br/register/agromm-logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:'#059669',brandLight:'#d1fae5',brandDark:'#065f46'}}}}</script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body{font-family:'Inter',sans-serif}
+    .step-card{transition:all .3s}
+    .step-card:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+    html{scroll-behavior:smooth}
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🐄 Bem-vindo ao AgroMM!</h1>
-            <p>Sistema Completo de Gestão Pecuária</p>
-        </div>
+<body class="bg-gray-50 text-gray-800">
 
-        <div class="welcome-section">
-            <h2>Olá, estamos muito felizes em tê-lo conosco!</h2>
-            <p>O AgroMM é a ferramenta que vai revolucionar a forma como você gerencia sua propriedade rural. Este guia foi criado especialmente para você começar a usar o sistema com segurança e aproveitar ao máximo todos os recursos disponíveis.</p>
-            <p><strong>Tempo estimado para configuração inicial:</strong> 30-45 minutos</p>
-        </div>
-
-        <div class="content">
-            <div class="intro">
-                <h3>📋 Antes de Começar</h3>
-                <p>É muito importante seguir esta ordem de configuração. Cada etapa prepara o terreno para a próxima, garantindo que todas as informações sejam cadastradas corretamente e seu sistema fique organizado desde o início.</p>
-            </div>
-
-            <div class="alert">
-                <div class="alert-icon">⚠️</div>
-                <div class="alert-content">
-                    <strong>Importante:</strong> Não pule nenhuma etapa! A ordem apresentada aqui garante que você não terá problemas de dependências entre cadastros.
-                </div>
-            </div>
-
-            <!-- PASSO 1 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">1</div>
-                    <div class="step-title">Configuração de Usuários e Permissões</div>
-                </div>
-                <div class="step-description">
-                    Comece definindo quem terá acesso ao sistema e o que cada pessoa poderá fazer.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">👤 Cadastro de Usuários</div>
-                        <div class="substep-description">
-                            Adicione os colaboradores que usarão o sistema (gerente, veterinário, funcionários). Defina nome, e-mail e senha inicial para cada um.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🔐 Tipos de Usuário e Permissões</div>
-                        <div class="substep-description">
-                            Configure os níveis de acesso: Administrador (acesso total), Gerente (pode visualizar e editar), Funcionário (acesso limitado). Isso garante segurança e organização dos dados.
-                        </div>
-                    </div>
-                </div>
-                <div class="tip">
-                    <div class="tip-icon">💡</div>
-                    <div class="tip-content">
-                        <strong>Dica:</strong> Comece com poucos usuários e adicione mais conforme necessário. Você pode alterar permissões a qualquer momento.
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 2 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">2</div>
-                    <div class="step-title">Cadastro de Fazendas</div>
-                </div>
-                <div class="step-description">
-                    Registre todas as propriedades rurais que você administra.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🏡 Criação de Fazendas</div>
-                        <div class="substep-description">
-                            Cadastre nome da fazenda, localização (município, estado), área total em hectares, e informações de contato. Você pode gerenciar múltiplas propriedades no mesmo sistema.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">✏️ Edição de Dados</div>
-                        <div class="substep-description">
-                            Mantenha as informações atualizadas: adicione observações importantes, atualize áreas após medições, e registre melhorias na infraestrutura.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 3 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">3</div>
-                    <div class="step-title">Cadastro de Raças</div>
-                </div>
-                <div class="step-description">
-                    Registre todas as raças de animais que você trabalha na propriedade.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🐂 Raças de Bovinos</div>
-                        <div class="substep-description">
-                            Cadastre as raças presentes no seu rebanho (Nelore, Angus, Brahman, Girolando, etc.). Inclua características importantes como aptidão (corte, leite, dupla aptidão) e origem.
-                        </div>
-                    </div>
-                </div>
-                <div class="tip">
-                    <div class="tip-icon">💡</div>
-                    <div class="tip-content">
-                        <strong>Dica:</strong> Cadastre primeiro as raças puras e depois os cruzamentos que você trabalha. Isso facilita o controle genético do rebanho.
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 4 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">4</div>
-                    <div class="step-title">Cadastro de Pastos e Piquetes</div>
-                </div>
-                <div class="step-description">
-                    Organize a divisão de áreas da sua propriedade para melhor gestão do pastoreio.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🌾 Criação de Pastos</div>
-                        <div class="substep-description">
-                            Cadastre cada pasto/piquete com nome, área em hectares, tipo de forrageira (Brachiaria, Mombaça, Tanzânia, etc.), capacidade de suporte e estado de conservação.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📊 Controle de Rotação</div>
-                        <div class="substep-description">
-                            Registre período de descanso, data da última adubação, e planeje a rotação de pastagens para manter a qualidade da forragem.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 5 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">5</div>
-                    <div class="step-title">Criação de Lotes</div>
-                </div>
-                <div class="step-description">
-                    Organize seus animais em grupos para facilitar o manejo e controle.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">📦 Configuração de Lotes</div>
-                        <div class="substep-description">
-                            Crie lotes de acordo com seus critérios: por categoria (bezerros, novilhas, vacas), por finalidade (engorda, reprodução, descarte), ou por pasto. Defina nome do lote, fazenda, e pasto onde está alocado.
-                        </div>
-                    </div>
-                </div>
-                <div class="alert">
-                    <div class="alert-icon">⚠️</div>
-                    <div class="alert-content">
-                        <strong>Atenção:</strong> Os lotes devem estar criados antes de cadastrar os animais, pois cada animal precisa ser alocado em um lote.
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 6 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">6</div>
-                    <div class="step-title">Cadastro de Animais</div>
-                </div>
-                <div class="step-description">
-                    Hora de registrar cada animal do seu rebanho com todas as informações importantes.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🏷️ Identificação Individual</div>
-                        <div class="substep-description">
-                            Registre número de brinco, nome/apelido, sexo, raça, data de nascimento, peso ao nascer, mãe, pai (se conhecido), e lote atual. Adicione foto se possível.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📝 Informações Complementares</div>
-                        <div class="substep-description">
-                            Anote pelagem, categoria (bezerro, novilha, vaca, touro, etc.), status (ativo, vendido, morto), origem (nascido na fazenda ou comprado), e observações relevantes sobre saúde ou comportamento.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 7 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">7</div>
-                    <div class="step-title">Registro de Compras</div>
-                </div>
-                <div class="step-description">
-                    Registre todas as aquisições de animais para controle completo do rebanho.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">💰 Compra de Animais</div>
-                        <div class="substep-description">
-                            Para cada compra, registre data, fornecedor, quantidade de animais, valor total e unitário, nota fiscal, finalidade da compra (reprodução, engorda, reposição), e condições de pagamento.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🔗 Vinculação ao Estoque</div>
-                        <div class="substep-description">
-                            Vincule os animais comprados ao lote apropriado e atualize automaticamente o estoque do rebanho.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 8 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">8</div>
-                    <div class="step-title">Controle de Vendas</div>
-                </div>
-                <div class="step-description">
-                    Gerencie todas as vendas de animais e acompanhe a rentabilidade do negócio.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">📊 Registro de Vendas</div>
-                        <div class="substep-description">
-                            Registre data da venda, comprador, animais vendidos (selecionando do sistema), peso na venda, valor total e por @/kg, forma de pagamento, e data de entrega.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📈 Análise de Resultado</div>
-                        <div class="substep-description">
-                            O sistema calcula automaticamente lucro/prejuízo, ganho de peso total, custos de produção, e período de permanência dos animais na fazenda.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 9 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">9</div>
-                    <div class="step-title">Gestão de Estoque</div>
-                </div>
-                <div class="step-description">
-                    Mantenha controle sobre todos os insumos e produtos da fazenda.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">📦 Estoque de Insumos</div>
-                        <div class="substep-description">
-                            Cadastre e controle: medicamentos veterinários, vacinas, vermífugos, carrapaticidas, suplementos minerais, rações, sal, fertilizantes, sementes de forrageiras, materiais de cerca, e equipamentos.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🔔 Alertas de Estoque</div>
-                        <div class="substep-description">
-                            Configure níveis mínimos de estoque para receber avisos automáticos quando for necessário repor algum item.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 10 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">10</div>
-                    <div class="step-title">Controle Financeiro e Gastos</div>
-                </div>
-                <div class="step-description">
-                    Tenha visão completa da saúde financeira da sua operação.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">💸 Registro de Despesas</div>
-                        <div class="substep-description">
-                            Cadastre todos os gastos por categoria: mão de obra (salários, encargos), alimentação (ração, suplementos, sal), sanidade (medicamentos, vacinas, consultas veterinárias), infraestrutura (manutenções, reformas), insumos agrícolas, combustível, energia elétrica, impostos e taxas.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">💰 Receitas e Fluxo de Caixa</div>
-                        <div class="substep-description">
-                            Registre todas as receitas (vendas de animais, leite, aluguel de pastos) e acompanhe o fluxo de caixa mensal. Visualize gráficos de receitas x despesas.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📊 Relatórios Financeiros</div>
-                        <div class="substep-description">
-                            Gere relatórios de DRE (Demonstração do Resultado do Exercício), custo por animal, custo por @, análise de rentabilidade por lote, e projeções financeiras.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 11 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">11</div>
-                    <div class="step-title">Sistema de Pesagem</div>
-                </div>
-                <div class="step-description">
-                    Acompanhe o desenvolvimento e ganho de peso do seu rebanho.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">⚖️ Registro de Pesagens</div>
-                        <div class="substep-description">
-                            Registre pesagens individuais ou em lote. Insira data, peso em kg, e condição corporal (escala de 1 a 5). O sistema calcula automaticamente ganho de peso diário (GPD) e ganho total.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📈 Gráficos de Evolução</div>
-                        <div class="substep-description">
-                            Visualize a curva de crescimento individual de cada animal e compare o desempenho entre lotes. Identifique animais com baixo desempenho para tomada de decisão.
-                        </div>
-                    </div>
-                </div>
-                <div class="tip">
-                    <div class="tip-icon">💡</div>
-                    <div class="tip-content">
-                        <strong>Dica:</strong> Estabeleça uma rotina de pesagem mensal para acompanhamento consistente. Pese sempre no mesmo horário para maior precisão.
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 12 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">12</div>
-                    <div class="step-title">Manejo Sanitário</div>
-                </div>
-                <div class="step-description">
-                    Garanta a saúde do rebanho com controle completo de vacinas, medicamentos e tratamentos.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">💉 Calendário de Vacinação</div>
-                        <div class="substep-description">
-                            Cadastre o protocolo de vacinação: febre aftosa, brucelose, raiva, clostridioses, carbúnculo, IBR/BVD. Configure lembretes automáticos para datas de revacinação.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🩺 Controle de Vermifugação</div>
-                        <div class="substep-description">
-                            Registre vermifugações estratégicas, produto utilizado, dosagem, via de aplicação, e data. Acompanhe contagem de OPG (ovos por grama de fezes) para avaliar eficácia.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🦟 Controle de Carrapatos</div>
-                        <div class="substep-description">
-                            Registre banhos carrapaticidas, produto usado, concentração, e intervalo entre aplicações. Monitore infestações e resistência parasitária.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🏥 Tratamentos Veterinários</div>
-                        <div class="substep-description">
-                            Registre consultas veterinárias, diagnósticos, medicamentos prescritos, posologia, período de carência para abate/leite, e evolução do tratamento.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 13 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">13</div>
-                    <div class="step-title">Banco de Sêmen</div>
-                </div>
-                <div class="step-description">
-                    Organize seu material genético e maximize os resultados da reprodução.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🧬 Cadastro de Touros</div>
-                        <div class="substep-description">
-                            Registre nome/código do touro, raça, central de inseminação, DEPs (Diferenças Esperadas na Progênie) para características econômicas, foto do animal, e certificado de genealogia.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">❄️ Controle de Estoque de Sêmen</div>
-                        <div class="substep-description">
-                            Registre quantidade de doses disponíveis, lote/partida, data de coleta, localização no botijão, valor por dose, e fornecedor. Atualize a cada utilização.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📊 Análise de Desempenho</div>
-                        <div class="substep-description">
-                            Acompanhe taxa de concepção por touro, qualidade da progênie gerada, e retorno sobre investimento em genética.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PASSO 14 -->
-            <div class="step">
-                <div class="step-header">
-                    <div class="step-number">14</div>
-                    <div class="step-title">Manejo Reprodutivo</div>
-                </div>
-                <div class="step-description">
-                    Gerencie toda a reprodução do rebanho para máxima eficiência produtiva.
-                </div>
-                <div class="substeps">
-                    <div class="substep">
-                        <div class="substep-title">🔄 Controle de Estação de Monta</div>
-                        <div class="substep-description">
-                            Defina período de monta (datas de início e fim), método reprodutivo (monta natural, IATF, IA convencional), e matrizes a serem cobertas. Configure grupos de manejo e protocolo hormonal se usar IATF.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🤰 Diagnóstico de Gestação</div>
-                        <div class="substep-description">
-                            Registre diagnósticos de gestação (data, método utilizado, resultado positivo/negativo, idade gestacional estimada). Calcule data prevista de parto automaticamente.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">🍼 Controle de Partos</div>
-                        <div class="substep-description">
-                            Registre data do parto, tipo (normal, distócico), necessidade de assistência, peso do bezerro ao nascer, sexo, vitalidade, e condições da mãe após o parto.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">📈 Indicadores Reprodutivos</div>
-                        <div class="substep-description">
-                            Acompanhe taxa de concepção, taxa de prenhez, intervalo entre partos (IEP), idade ao primeiro parto, e taxa de desmame. Identifique matrizes com problemas reprodutivos.
-                        </div>
-                    </div>
-                    <div class="substep">
-                        <div class="substep-title">👶 Manejo de Bezerros</div>
-                        <div class="substep-description">
-                            Registre cura do umbigo, primeira mamada de colostro, identificação com brinco, pesagem ao nascer, e vacinações iniciais. Acompanhe desenvolvimento até o desmame.
-                        </div>
-                    </div>
-                </div>
-                <div class="alert">
-                    <div class="alert-icon">⚠️</div>
-                    <div class="alert-content">
-                        <strong>Importante:</strong> O sucesso reprodutivo depende de registros precisos. Mantenha sempre os dados atualizados para não perder oportunidades de cobertura e identificar problemas precocemente.
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONCLUSÃO -->
-            <div class="intro" style="background: #e3f2fd; border-left-color: #1976d2; margin-top: 40px;">
-                <h3>🎉 Parabéns! Você está pronto para usar o AgroMM</h3>
-                <p>Seguindo este guia passo a passo, você configurou completamente seu sistema de gestão pecuária. Agora você tem todas as ferramentas necessárias para:</p>
-                <ul style="margin-top: 15px; margin-left: 20px; color: #555;">
-                    <li style="margin-bottom: 8px;">✅ Tomar decisões baseadas em dados reais e confiáveis</li>
-                    <li style="margin-bottom: 8px;">✅ Aumentar a produtividade e lucratividade do seu negócio</li>
-                    <li style="margin-bottom: 8px;">✅ Ter controle total sobre todos os aspectos da propriedade</li>
-                    <li style="margin-bottom: 8px;">✅ Reduzir custos através de gestão eficiente</li>
-                    <li style="margin-bottom: 8px;">✅ Melhorar índices zootécnicos e reprodutivos</li>
-                </ul>
-            </div>
-
-            <div class="tip" style="margin-top: 25px;">
-                <div class="tip-icon">💡</div>
-                <div class="tip-content">
-                    <strong>Próximos Passos:</strong> Estabeleça uma rotina de atualização dos dados. Dedique alguns minutos por dia para manter o sistema atualizado. Quanto mais você usar, mais valor o AgroMM vai agregar ao seu negócio!
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer">
-            <h3>📞 Precisa de Ajuda?</h3>
-            <p>Nossa equipe está sempre pronta para auxiliar você!</p>
-            
-            <div class="support-box">
-                <p><strong>📧 E-mail:</strong> suporte@agromm.com.br</p>
-                <p><strong>📱 WhatsApp:</strong> (21) 98765-4321</p>
-                <p><strong>🕐 Horário de Atendimento:</strong> Segunda a Sexta, 8h às 18h</p>
-                <p style="margin-top: 15px; font-size: 0.9em;">Resposta em até 24 horas úteis</p>
-            </div>
-
-            <p style="margin-top: 25px; font-size: 0.95em; opacity: 0.9;">
-                <strong>AgroMM</strong> - Gestão Inteligente para o Campo Moderno<br>
-                © 2024 Menezes Agro Solutions. Todos os direitos reservados.
-            </p>
-        </div>
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-emerald-700 via-emerald-600 to-emerald-800 text-white">
+    <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+      <div class="flex flex-col items-center gap-4 mb-6">
+        <img src="https://agromm.mbam.com.br/register/agromm-logo.png" alt="Agromm" class="w-32 h-32 rounded-2xl shadow-2xl border-4 border-white/20">
+        <span class="text-4xl font-extrabold tracking-tight">Agromm</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-4">Guia de Primeiros Passos</h1>
+      <p class="text-lg text-emerald-100 max-w-2xl mx-auto">Configure seu sistema em poucos minutos e comece a gerenciar sua propriedade com inteligência.</p>
+      <div class="mt-8 inline-flex items-center gap-2 bg-white/10 backdrop-blur px-5 py-2.5 rounded-full text-sm">
+        <span>⏱️</span>
+        <span>Tempo estimado: <strong>30-45 minutos</strong></span>
+      </div>
     </div>
+  </header>
+
+  <!-- Progress Nav -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center gap-4 overflow-x-auto text-sm">
+      <span class="text-emerald-600 font-semibold whitespace-nowrap">Etapas:</span>
+      <div class="flex gap-2">
+        <a href="#step-1" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">1</a>
+        <a href="#step-2" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">2</a>
+        <a href="#step-3" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">3</a>
+        <a href="#step-4" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">4</a>
+        <a href="#step-5" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">5</a>
+        <a href="#step-6" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">6</a>
+        <a href="#step-7" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">7</a>
+        <a href="#step-8" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">8</a>
+        <a href="#step-9" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">9</a>
+        <a href="#step-10" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">10</a>
+        <a href="#step-11" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">11</a>
+        <a href="#step-12" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">12</a>
+        <a href="#step-13" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">13</a>
+        <a href="#step-14" class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold hover:bg-emerald-700 transition">14</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <main class="max-w-5xl mx-auto px-6 py-12 relative">
+    <!-- Logo background -->
+    <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 opacity-[0.06]">
+      <img src="https://agromm.mbam.com.br/register/agromm-logo.png" alt="" class="w-[1000px] h-[1000px] object-contain">
+    </div>
+    <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 mb-8">
+      <h3 class="text-lg font-bold text-emerald-800 mb-2">📋 Antes de Começar</h3>
+      <p class="text-emerald-700">Siga a ordem das etapas abaixo. Cada passo prepara o próximo, garantindo que tudo fique organizado desde o início.</p>
+    </div>
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-12 flex items-start gap-3">
+      <span class="text-xl">⚠️</span>
+      <p class="text-amber-800 text-sm"><strong>Importante:</strong> Não pule etapas! A ordem garante que não haverá problemas de dependências entre cadastros.</p>
+    </div>
+
+    <!-- Steps -->
+    <div class="space-y-8">
+
+      <!-- Step 1 -->
+      <div id="step-1" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">1</div>
+          <h2 class="text-xl font-bold">Configuração de Usuários e Permissões</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Defina quem terá acesso ao sistema e o que cada pessoa poderá fazer.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">👤 Cadastro de Usuários</h4>
+              <p class="text-sm text-gray-600">Adicione colaboradores (gerente, veterinário, funcionários) com nome, e-mail e senha inicial.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🔐 Permissões</h4>
+              <p class="text-sm text-gray-600">Administrador (acesso total), Gerente (visualizar e editar), Funcionário (acesso limitado).</p>
+            </div>
+          </div>
+          <div class="mt-4 bg-sky-50 border border-sky-200 rounded-lg p-3 flex items-start gap-2">
+            <span>💡</span>
+            <p class="text-sm text-sky-800">Comece com poucos usuários e adicione mais conforme necessário. Permissões podem ser alteradas a qualquer momento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="step-2" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">2</div>
+          <h2 class="text-xl font-bold">Cadastro de Fazendas</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Registre todas as propriedades rurais que você administra.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🏡 Criação de Fazendas</h4>
+              <p class="text-sm text-gray-600">Nome, localização, área em hectares e informações de contato. Gerencie múltiplas propriedades.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">✏️ Edição de Dados</h4>
+              <p class="text-sm text-gray-600">Mantenha informações atualizadas: observações, áreas, melhorias na infraestrutura.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div id="step-3" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">3</div>
+          <h2 class="text-xl font-bold">Cadastro de Raças</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Registre todas as raças de animais que você trabalha na propriedade.</p>
+          <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+            <h4 class="font-semibold text-gray-900 mb-1">🐂 Raças de Bovinos</h4>
+            <p class="text-sm text-gray-600">Cadastre raças presentes (Nelore, Angus, Brahman, Girolando, etc.) com aptidão (corte, leite, dupla aptidão) e origem.</p>
+          </div>
+          <div class="mt-4 bg-sky-50 border border-sky-200 rounded-lg p-3 flex items-start gap-2">
+            <span>💡</span>
+            <p class="text-sm text-sky-800">Cadastre primeiro as raças puras e depois os cruzamentos. Facilita o controle genético do rebanho.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div id="step-4" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">4</div>
+          <h2 class="text-xl font-bold">Cadastro de Pastos e Piquetes</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Organize a divisão de áreas para melhor gestão do pastoreio.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🌾 Criação de Pastos</h4>
+              <p class="text-sm text-gray-600">Nome, área em hectares, tipo de forrageira (Brachiaria, Mombaça, Tanzânia), capacidade de suporte.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📊 Controle de Rotação</h4>
+              <p class="text-sm text-gray-600">Período de descanso, última adubação e planejamento de rotação de pastagens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div id="step-5" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">5</div>
+          <h2 class="text-xl font-bold">Criação de Lotes</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Organize seus animais em grupos para facilitar o manejo.</p>
+          <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+            <h4 class="font-semibold text-gray-900 mb-1">📦 Configuração de Lotes</h4>
+            <p class="text-sm text-gray-600">Crie lotes por categoria (bezerros, novilhas, vacas), finalidade (engorda, reprodução) ou pasto. Defina nome, fazenda e pasto.</p>
+          </div>
+          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 flex items-start gap-2">
+            <span>⚠️</span>
+            <p class="text-sm text-amber-800"><strong>Atenção:</strong> Crie os lotes antes de cadastrar animais. Cada animal precisa ser alocado em um lote.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div id="step-6" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">6</div>
+          <h2 class="text-xl font-bold">Cadastro de Animais</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Registre cada animal com todas as informações importantes.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🏷️ Identificação Individual</h4>
+              <p class="text-sm text-gray-600">Brinco, nome, sexo, raça, nascimento, peso ao nascer, mãe, pai e lote atual.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📝 Informações Complementares</h4>
+              <p class="text-sm text-gray-600">Pelagem, categoria, status (ativo, vendido, morto), origem e observações de saúde.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7 -->
+      <div id="step-7" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">7</div>
+          <h2 class="text-xl font-bold">Registro de Compras</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Registre todas as aquisições de animais para controle completo.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">💰 Compra de Animais</h4>
+              <p class="text-sm text-gray-600">Data, fornecedor, quantidade, valor total/unitário, nota fiscal, finalidade e condições de pagamento.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🔗 Vinculação ao Estoque</h4>
+              <p class="text-sm text-gray-600">Vincule animais comprados ao lote apropriado e atualize automaticamente o estoque.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8 -->
+      <div id="step-8" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">8</div>
+          <h2 class="text-xl font-bold">Controle de Vendas</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Gerencie vendas e acompanhe a rentabilidade do negócio.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📊 Registro de Vendas</h4>
+              <p class="text-sm text-gray-600">Data, comprador, animais vendidos, peso na venda, valor total e por @/kg, forma de pagamento.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📈 Análise de Resultado</h4>
+              <p class="text-sm text-gray-600">Cálculo automático de lucro/prejuízo, ganho de peso, custos de produção e tempo de permanência.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 9 -->
+      <div id="step-9" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">9</div>
+          <h2 class="text-xl font-bold">Gestão de Estoque</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Controle todos os insumos e produtos da fazenda.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📦 Estoque de Insumos</h4>
+              <p class="text-sm text-gray-600">Medicamentos, vacinas, vermífugos, suplementos, rações, sal, fertilizantes, materiais de cerca e equipamentos.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🔔 Alertas de Estoque</h4>
+              <p class="text-sm text-gray-600">Configure níveis mínimos para receber avisos automáticos quando precisar repor itens.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 10 -->
+      <div id="step-10" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">10</div>
+          <h2 class="text-xl font-bold">Controle Financeiro</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Visão completa da saúde financeira da sua operação.</p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">💸 Despesas</h4>
+              <p class="text-sm text-gray-600">Mão de obra, alimentação, sanidade, infraestrutura, combustível, energia e impostos.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">💰 Receitas</h4>
+              <p class="text-sm text-gray-600">Vendas de animais, leite, aluguel de pastos. Fluxo de caixa mensal com gráficos.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📊 Relatórios</h4>
+              <p class="text-sm text-gray-600">DRE, custo por animal, custo por @, rentabilidade por lote e projeções.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 11 -->
+      <div id="step-11" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">11</div>
+          <h2 class="text-xl font-bold">Sistema de Pesagem</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Acompanhe o desenvolvimento e ganho de peso do rebanho.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">⚖️ Registro de Pesagens</h4>
+              <p class="text-sm text-gray-600">Pesagens individuais ou em lote. Data, peso em kg, condição corporal. Cálculo automático de GPD.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📈 Gráficos de Evolução</h4>
+              <p class="text-sm text-gray-600">Curva de crescimento individual, comparação entre lotes, identificação de baixo desempenho.</p>
+            </div>
+          </div>
+          <div class="mt-4 bg-sky-50 border border-sky-200 rounded-lg p-3 flex items-start gap-2">
+            <span>💡</span>
+            <p class="text-sm text-sky-800">Estabeleça pesagem mensal no mesmo horário para maior precisão e acompanhamento consistente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 12 -->
+      <div id="step-12" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">12</div>
+          <h2 class="text-xl font-bold">Manejo Sanitário</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Controle completo de vacinas, medicamentos e tratamentos.</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">💉 Vacinação</h4>
+              <p class="text-sm text-gray-600">Aftosa, brucelose, raiva, clostridioses, IBR/BVD. Lembretes automáticos de revacinação.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🩺 Vermifugação</h4>
+              <p class="text-sm text-gray-600">Produto, dosagem, via de aplicação. Acompanhamento de OPG para avaliar eficácia.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🦟 Controle de Carrapatos</h4>
+              <p class="text-sm text-gray-600">Banhos carrapaticidas, produto, concentração, intervalo. Monitoramento de resistência.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🏥 Tratamentos</h4>
+              <p class="text-sm text-gray-600">Consultas, diagnósticos, medicamentos, posologia, período de carência e evolução.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 13 -->
+      <div id="step-13" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">13</div>
+          <h2 class="text-xl font-bold">Banco de Sêmen</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Organize seu material genético e maximize resultados da reprodução.</p>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🧬 Cadastro de Touros</h4>
+              <p class="text-sm text-gray-600">Nome, raça, central, DEPs, foto e certificado de genealogia.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">❄️ Estoque de Sêmen</h4>
+              <p class="text-sm text-gray-600">Doses disponíveis, lote, data de coleta, localização no botijão, valor por dose.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📊 Desempenho</h4>
+              <p class="text-sm text-gray-600">Taxa de concepção por touro, qualidade da progênie e ROI em genética.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 14 -->
+      <div id="step-14" class="step-card bg-white/95 backdrop-blur-sm relative z-10 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="flex items-center gap-4 bg-emerald-600 text-white px-6 py-4">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold text-lg">14</div>
+          <h2 class="text-xl font-bold">Manejo Reprodutivo</h2>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-600 mb-4">Gerencie toda a reprodução para máxima eficiência produtiva.</p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🔄 Estação de Monta</h4>
+              <p class="text-sm text-gray-600">Período, método (monta natural, IATF, IA), matrizes e protocolo hormonal.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🤰 Diagnóstico de Gestação</h4>
+              <p class="text-sm text-gray-600">Data, método, resultado, idade gestacional. Cálculo automático de data prevista de parto.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">🍼 Controle de Partos</h4>
+              <p class="text-sm text-gray-600">Data, tipo (normal/distócico), peso do bezerro, sexo, vitalidade e condição da mãe.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">📈 Indicadores</h4>
+              <p class="text-sm text-gray-600">Taxa de concepção, prenhez, IEP, idade ao primeiro parto e taxa de desmame.</p>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-emerald-500">
+              <h4 class="font-semibold text-gray-900 mb-1">👶 Manejo de Bezerros</h4>
+              <p class="text-sm text-gray-600">Cura do umbigo, colostro, brinco, pesagem ao nascer e vacinações iniciais.</p>
+            </div>
+          </div>
+          <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-3 flex items-start gap-2">
+            <span>⚠️</span>
+            <p class="text-sm text-amber-800"><strong>Importante:</strong> Registros precisos são essenciais para o sucesso reprodutivo. Mantenha dados atualizados para não perder oportunidades.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Conclusion -->
+    <div class="mt-12 bg-gradient-to-r from-emerald-50 to-sky-50 border border-emerald-200 rounded-2xl p-8">
+      <h3 class="text-2xl font-bold text-emerald-800 mb-4">🎉 Parabéns! Você está pronto!</h3>
+      <p class="text-gray-700 mb-4">Com o sistema configurado, você agora pode:</p>
+      <div class="grid md:grid-cols-2 gap-3">
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Tomar decisões baseadas em dados reais</span></div>
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Aumentar produtividade e lucratividade</span></div>
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Controle total sobre a propriedade</span></div>
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Reduzir custos com gestão eficiente</span></div>
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Melhorar índices zootécnicos</span></div>
+        <div class="flex items-center gap-2"><span class="text-emerald-600">✅</span><span class="text-sm text-gray-700">Relatórios profissionais em PDF</span></div>
+      </div>
+      <div class="mt-6 bg-sky-50 border border-sky-200 rounded-lg p-3 flex items-start gap-2">
+        <span>💡</span>
+        <p class="text-sm text-sky-800"><strong>Próximo passo:</strong> Dedique alguns minutos por dia para manter o sistema atualizado. Quanto mais usar, mais valor o Agromm agrega ao seu negócio!</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-16">
+    <div class="max-w-5xl mx-auto px-6 py-12 text-center">
+      <h3 class="text-xl font-bold mb-4">📞 Precisa de Ajuda?</h3>
+      <p class="text-gray-400 mb-6">Nossa equipe está pronta para auxiliar você!</p>
+      <div class="inline-flex flex-col sm:flex-row gap-4 mb-8">
+        <a href="mailto:suporte@mbam.com.br" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-xl transition flex items-center gap-2 justify-center">
+          <span>📧</span> suporte@mbam.com.br
+        </a>
+        <a href="https://wa.me/17866905905" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl transition flex items-center gap-2 justify-center font-semibold">
+          <span>💬</span> WhatsApp
+        </a>
+      </div>
+      <p class="text-gray-500 text-sm">🕐 Segunda a Sexta, 8h às 18h • Resposta em até 24h úteis</p>
+      <div class="mt-8 pt-6 border-t border-gray-800 flex items-center justify-center gap-4">
+        <img src="https://agromm.mbam.com.br/register/agromm-logo.png" alt="Agromm" class="w-14 h-14 rounded-xl">
+        <div class="text-left">
+          <p class="font-semibold text-sm">Agromm Solution</p>
+          <p class="text-gray-500 text-xs">Grupo MBAM • © 2025</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
